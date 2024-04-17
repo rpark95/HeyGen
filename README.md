@@ -1,8 +1,12 @@
-API Endpoint
+**API Endpoints**
+------------------------------------------------------------------------------------------------------------------------
+
 GET /video/status/{id}
-Response Body {
+
+ResponseBody {
     "result" : "COMPLETED"/"PENDING"/"ERROR"
 }
+
 Returns the status of the video with the given id.
 
 POST /video/upload/
@@ -17,9 +21,11 @@ ResponseBody {
     "email"
     "uploadTime"
 }
+
 Posts a video to the server for processing. Responds with the video metadata.
-------------------------------------------------------------------------------------------------------------------------
+
 Implementation
+------------------------------------------------------------------------------------------------------------------------
 VideoController
 -Defines the API endpoints and calls the appropriate service to serve the request
 
@@ -44,6 +50,8 @@ This would ensure that if DLQ goes down for whatever reason there will be a back
 NotificationService
 -Intializes JavaMailSender
 -sends emails
+
+Testing
 --------------------------------------------------------------------------------------------------------------------------
 To run tests go to test/java/com.example.HeyGen/
 Run each of the test files.
@@ -56,8 +64,9 @@ And the video status will stay as ERROR
 VideoProcessorTest
 -This tests the functionality of the processing queue.
 -After processing the video an email will be sent to the user confirming the completion of the video processing.
-------------------------------------------------------------------------------------------------------------------------
+
 Postman
+------------------------------------------------------------------------------------------------------------------------
 -Feel free to test using Postman
 -Run main. Start making requests in Postman
 -I chose not to make it configurable in the request body because the user shouldn't need to provide that sort of information
